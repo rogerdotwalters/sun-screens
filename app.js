@@ -433,7 +433,7 @@ function animateCount(el, target) {
       submitBtn.disabled = false;
       btnText.hidden     = false;
       btnLoading.hidden  = true;
-      alert('Something went wrong. Please call us at (903) 555-0192 or try again.');
+      alert('Something went wrong. Please send us an email at or try again.');
     }
   });
 })();
