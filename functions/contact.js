@@ -71,9 +71,9 @@ export async function onRequestPost(context) {
     }
 
     // ── Build notification email ──
-    const toEmail   = env.NOTIFY_EMAIL || 'hello@lonestarsolarscreens.com';
-    const fromEmail = env.FROM_EMAIL   || 'noreply@lonestarsolarscreens.com';
-    const fromName  = env.FROM_NAME    || 'Lone Star Solar Screens Website';
+    const toEmail   = env.NOTIFY_EMAIL || 'rogerwalters3@gmail.com';
+    const fromEmail = env.FROM_EMAIL   || 'noreply@sun-screens.com';
+    const fromName  = env.FROM_NAME    || 'Sun Screens Website';
 
     const subject = `New Quote Request — ${fields.firstName} ${fields.lastName} (${fields.city})`;
 
