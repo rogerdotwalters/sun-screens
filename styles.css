@@ -18,7 +18,7 @@
   --clr-rule:       #e8d9c5;
 
   /* Gradients */
-  --grad-hero: radial-gradient(ellipse 120% 80% at 60% 20%, #e22d00 0%, #e8890c 30%, #b94a1a 65%, #3d1a06 100%);
+  --grad-hero: radial-gradient(ellipse 120% 80% at 60% 20%, #e22d00 0%, #e8890c 40%, #b94a1a 65%, #3d1a06 100%);
   --grad-stat: linear-gradient(135deg, #b94a1a 0%, #8c3410 100%);
   --grad-calc: linear-gradient(160deg, #fdf6ec 0%, #fef3e2 100%);
 
@@ -332,6 +332,7 @@ input, textarea, select, button { font: inherit; }
   gap: var(--space-16);
   margin-bottom: var(--space-40);
 }
+
 
 .trust-strip {
   display: flex;
