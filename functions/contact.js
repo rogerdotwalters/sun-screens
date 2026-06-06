@@ -192,8 +192,16 @@ console.log("From:", fromEmail);
 
 const responseText = await mailRes.text();
 
-console.log('Email API status:', mailRes.status);
-console.log('Email API response:', responseText);
+return new Response(
+  JSON.stringify({
+    emailStatus: mailRes.status,
+    emailResponse: responseText
+  }),
+  {
+    status: 200,
+    headers
+  }
+);
 
 if (!mailRes.ok && mailRes.status !== 202) {
   console.error('Email API error:', mailRes.status, responseText);
