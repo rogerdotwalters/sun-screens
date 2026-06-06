@@ -119,7 +119,7 @@ export async function onRequestPost(context) {
 <div class="wrap">
   <div class="hdr">
     <h1>☀ New Quote Request</h1>
-    <p>Submitted via lonestarsolarscreens.com</p>
+    <p>Submitted via easttexassunscreens.com</p>
   </div>
   <div class="body">
     <p class="section-label">Contact Details</p>
