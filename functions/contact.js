@@ -175,18 +175,11 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: {
-          email: fromEmail,
-          name: fromName,
-        },
-        to: [
-          {
-            email: toEmail,
-          }
-        ],
+        to: toEmail,
+        from: fromEmail,
         subject,
-        text: textBody,
         html: htmlBody,
+        text: textBody
       }),
     });
 
