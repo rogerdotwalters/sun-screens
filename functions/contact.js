@@ -182,6 +182,10 @@ export async function onRequestPost(context) {
         text: textBody
       }),
     });
+    
+    const responseText = await mailRes.text();
+    console.log('Email API status:', mailRes.status);
+    console.log('Email API response:', responseText);
 
     if (!mailRes.ok && mailRes.status !== 202) {
       const detail = await mailRes.text();
