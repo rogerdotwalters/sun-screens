@@ -168,6 +168,13 @@ export async function onRequestPost(context) {
       }),
     });
 */
+
+console.log("CF_ACCOUNT_ID:", env.CF_ACCOUNT_ID);
+console.log("Token exists:", !!env.CF_EMAIL_API_TOKEN);
+console.log("Sending to:", toEmail);
+console.log("From:", fromEmail);
+
+
     const mailRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + env.CF_ACCOUNT_ID + '/email/sending/send', {
       method: 'POST',
       headers: {
@@ -182,7 +189,7 @@ export async function onRequestPost(context) {
         text: textBody
       }),
     });
-    
+
     const responseText = await mailRes.text();
     console.log('Email API status:', mailRes.status);
     console.log('Email API response:', responseText);
@@ -199,10 +206,20 @@ export async function onRequestPost(context) {
 
   } catch (err) {
     console.error('Contact function error:', err);
-    return new Response(
-      JSON.stringify({ ok: false, error: 'Internal server error' }),
-      { status: 500, headers }
-    );
+
+  return new Response(
+    JSON.stringify({
+      ok: false,
+      error: String(err),
+      stack: err?.stack
+    }),
+    {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  );
   }
 }
 
