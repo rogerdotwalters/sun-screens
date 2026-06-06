@@ -168,7 +168,7 @@ export async function onRequestPost(context) {
       }),
     });
 */
-    const mailRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + env.CF_ACCOUNT_ID + '/email/send', {
+    const mailRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + env.CF_ACCOUNT_ID + '/email/sending/send', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${env.CF_EMAIL_API_TOKEN}`,
