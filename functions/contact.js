@@ -149,31 +149,6 @@ export async function onRequestPost(context) {
 </div>
 </body></html>`;
 
-    // ── Send via MailChannels (no API key needed on Cloudflare Pages) ──
-/*     const mailRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        personalizations: [{
-          to: [{ email: toEmail }],
-          // Let the lead reply directly back to the submitter
-          reply_to: { email: fields.email.trim(), name: `${fields.firstName} ${fields.lastName}` },
-        }],
-        from: { email: fromEmail, name: fromName },
-        subject,
-        content: [
-          { type: 'text/plain', value: textBody },
-          { type: 'text/html',  value: htmlBody },
-        ],
-      }),
-    });
-*/
-
-console.log("CF_ACCOUNT_ID:", env.CF_ACCOUNT_ID);
-console.log("Token exists:", !!env.CF_EMAIL_API_TOKEN);
-console.log("Sending to:", toEmail);
-console.log("From:", fromEmail);
-
 
     const mailRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + env.CF_ACCOUNT_ID + '/email/sending/send', {
       method: 'POST',
