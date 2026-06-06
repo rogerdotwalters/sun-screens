@@ -47,10 +47,11 @@ export async function onRequestPost(context) {
     }
 
     // ── Honeypot check ──
-    if (fields['_gotcha']) {
+
+    if (fields['_gotcha'] && fields['_gotcha'].length > 0) {
       // Silently succeed — don't tip off bots
-      return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
-    }
+    return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
+}
 
     // ── Basic server-side validation ──
     const required = ['firstName', 'lastName', 'email', 'city'];
@@ -78,7 +79,7 @@ export async function onRequestPost(context) {
     const subject = `New Quote Request — ${fields.firstName} ${fields.lastName} (${fields.city})`;
 
     const textBody = [
-      'New quote request from lonestarsolarscreens.com',
+      'New quote request from easttexassunscreens.com',
       '─'.repeat(48),
       `Name:          ${fields.firstName} ${fields.lastName}`,
       `Email:         ${fields.email}`,
