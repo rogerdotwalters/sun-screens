@@ -49,7 +49,6 @@ export async function onRequestPost(context) {
     // ── Honeypot check ──
 
     if (fields['_gotcha'] && fields['_gotcha'].length > 0) {
-      // Silently succeed — don't tip off bots
     return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
 }
 
@@ -72,9 +71,9 @@ export async function onRequestPost(context) {
     }
 
     // ── Build notification email ──
-    const toEmail   = env.NOTIFY_EMAIL || 'hello@lonestarsolarscreens.com';
-    const fromEmail = env.FROM_EMAIL   || 'noreply@sun-screen.com';
-    const fromName  = env.FROM_NAME    || 'Lone Star Solar Screens Website';
+    const toEmail   = env.NOTIFY_EMAIL || 'contact@easttexassunscreens.com';
+    const fromEmail = env.FROM_EMAIL   || 'contact@easttexassunscreens.com';
+    const fromName  = env.FROM_NAME    || 'East Texas Sun Screens';
 
     const subject = `New Quote Request — ${fields.firstName} ${fields.lastName} (${fields.city})`;
 
