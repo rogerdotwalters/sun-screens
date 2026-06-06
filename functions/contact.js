@@ -190,17 +190,14 @@ console.log("From:", fromEmail);
       }),
     });
 
-    const responseText = await mailRes.text();
-    console.log('Email API status:', mailRes.status);
-    console.log('Email API response:', responseText);
+const responseText = await mailRes.text();
 
-    if (!mailRes.ok && mailRes.status !== 202) {
-      const detail = await mailRes.text();
-      console.error('MailChannels error:', mailRes.status, detail);
-      // Still return 200 to the user — log the failure server-side
-      // so the lead isn't lost, but the form shows success.
-      // In production you'd also write to KV or D1 as a backup.
-    }
+console.log('Email API status:', mailRes.status);
+console.log('Email API response:', responseText);
+
+if (!mailRes.ok && mailRes.status !== 202) {
+  console.error('Email API error:', mailRes.status, responseText);
+}
 
     return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
 
