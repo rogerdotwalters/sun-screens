@@ -150,7 +150,7 @@ export async function onRequestPost(context) {
 </body></html>`;
 
     // ── Send via MailChannels (no API key needed on Cloudflare Pages) ──
-    const mailRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
+/*     const mailRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -165,6 +165,32 @@ export async function onRequestPost(context) {
           { type: 'text/plain', value: textBody },
           { type: 'text/html',  value: htmlBody },
         ],
+      }),
+    });
+*/
+    const mailRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + env.CF_ACCOUNT_ID + '/email/routing/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.CF_EMAIL_API_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: {
+          email: fromEmail,
+          name: fromName,
+        },
+        to: [
+          {
+            email: toEmail,
+          }
+        ],
+        reply_to: {
+          email: fields.email.trim(),
+          name: `${fields.firstName} ${fields.lastName}`,
+        },
+        subject,
+        text: textBody,
+        html: htmlBody,
       }),
     });
 
